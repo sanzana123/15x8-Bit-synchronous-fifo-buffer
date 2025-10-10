@@ -46,6 +46,7 @@ module fifo(
     // full and empty are combinational logic. Does not depend on the clock
     assign full = ((wr_index + 1) % 16) == rd_index;
     assign empty = (rd_index == wr_index);
+    assign rd_data = fifo_slot[rd_index];
    
     
     
@@ -81,7 +82,6 @@ module fifo(
       begin 
         if (!empty)
         begin 
-          rd_data <= fifo_slot[rd_index];
           rd_index <= rd_index + 1;
         end 
       end
