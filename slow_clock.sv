@@ -32,8 +32,8 @@ module slow_clock(
     always_ff @(posedge clock_in)
     begin
       count <= count + 1;
-      //if (count == 125000000) - 4 Hz clock 
-      if (count == 50000) //- 2 Khz clock
+        //if (count == 125000000) - 4 Hz clock - (100 MHz/ 4Hz)/2 = 125000000
+        if (count == 50000) //- 2 Khz clock - (100 Mhz / 2 Khz)/2 = 50000
       begin 
         count <= 0;
         clock_out <= ~clock_out;
